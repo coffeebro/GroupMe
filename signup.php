@@ -10,13 +10,6 @@ $config = new PHPAuth\Config($dbh);
 $auth   = new PHPAuth\Auth($dbh, $config);
 
 $return = $auth->register( $_POST['email'], $_POST['password'], $_POST['confirmpass'] );
-if ( $return['error'] == TRUE ) {
-  echo "Sorry, there was a problem with registration.";
-}
-else {
-  echo $return['message'];
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -30,5 +23,14 @@ else {
   </head>
   <body>
     <!-- page content -->
+
+    <div>
+      <?php
+        echo $return['message'];
+        echo '<br>';
+        echo '<button id="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" onclick="window.location.href=\'index.php\'"><span class="ui-button-text">Main Page</span></button>';
+      ?>
+    </div>
+
   </body>
 </html>
