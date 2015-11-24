@@ -7,6 +7,7 @@ GroupMe is being jointly developed by three graduate students with the College o
 # Deploying GroupMe Locally
 You'll need to do two things in order to deploy the GroupMe web application:
   1. Once you've installed XAMPP, place the repository in the "htdocs" folder of your XAMPP installation and name the repository folder "GroupMe".
+  
   2. You need to setup the authentication database by performing the following steps:
     a. Start your Apache Web Server and MySQL Database in XAMPP
     b. Visit "localhost/phpmyadmin" using your web browser
@@ -16,6 +17,7 @@ You'll need to do two things in order to deploy the GroupMe web application:
     f. Along the top row of buttons, click "Import"
     g. Click the "Choose file" button and select the "database_mysql.sql" file in the "PHPAuth" folder of the repository
     h. Click "Go"
+
 That's it!  You can visit the main page by visiting "localhost/GroupMe/index.php" in your web browser.
 
 #Supported Actions
