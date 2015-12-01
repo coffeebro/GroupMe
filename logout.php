@@ -13,7 +13,27 @@ $logout = $auth->logout($_COOKIE[$config->cookie_name]);
 if ($logout) {
 	header('Location: index.php');
 }
-else {
-	echo 'There was a problem logging out..';
-}
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GroupMe Logout Portal</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <!-- page content -->
+
+    <div>
+      <?php
+        echo $logout['message'];
+        echo '<br>';
+        echo '<button id="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" onclick="window.location.href=\'index.php\'"><span class="ui-button-text">Main Page</span></button>';
+      ?>
+    </div>
+
+  </body>
+</html>
