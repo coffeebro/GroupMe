@@ -15,10 +15,15 @@ You'll need to do two things in order to deploy the GroupMe web application:
     d. Type "phpauth" for the database name and click "Create"
     e. Click on the "phpauth" database you just created from the list on the left
     f. Along the top row of buttons, click "Import"
-    g. Click the "Choose file" button and select the "database_mysql.sql" file in the "PHPAuth" folder of the repository
+    g. Click the "Choose file" button and select the "phpauth.sql" file in the "databases" folder of the repository
     h. Click "Go"
 
-That's it!  You can visit the main page by visiting "localhost/GroupMe/index.php" in your web browser.
+  3. Follow similar steps to those above in order to create the "groupme" database and import the "groupme.sql" file
+
+That's it!  You can visit the main page by visiting "localhost/GroupMe/index.php" in your web browser.  Either register your own account, or use the default credentials:
+
+  Username: test@test.com
+  Password: test
 
 #Supported Actions
 Below is a list of the currently implemented functionality:
