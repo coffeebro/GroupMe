@@ -24,4 +24,6 @@ That's it!  You can visit the main page by visiting "localhost/GroupMe/index.php
 Below is a list of the currently implemented functionality:
   1. Create an account
   2. Login
+  3. Join group
+  4. Leave group
   3. Logout
