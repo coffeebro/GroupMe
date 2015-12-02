@@ -11,6 +11,7 @@
 
   $uid = $auth->getSessionUID( $_COOKIE[$config->cookie_name] );
   $data = $auth->getUser( $uid );
+  $name = $data['email'];
 
   if (!$auth->isLogged()) {
     header('HTTP/1.0 403 Forbidden');
@@ -36,7 +37,7 @@
 
       <div id="list">
         <select name="groupList" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only">
-          <?php foreach ( $groupme->query("SELECT * FROM groups") as $row ) { echo '<option value="'.$row['gid'].'">'.$row['name'].'</option>'; } ?>
+          <?php foreach ( $groupme->query("SELECT gid, groupname FROM users WHERE name = '".$name."'") as $row ) { echo '<option value="'.$row['gid'].'">'.$row['groupname'].'</option>'; } ?>
         </select>
       </div>
       <input type="hidden" name="origin" value="leave">

@@ -13,6 +13,7 @@
   $data = $auth->getUser( $uid );
 
   $name = $data['email'];
+  $inUse = 0;
 
   if (!$auth->isLogged()) {
     header('HTTP/1.0 403 Forbidden');
@@ -28,11 +29,43 @@
     $groupname = $row['name'];
 
     $sql = "INSERT INTO `users`( `name`, `gid`, `groupname` ) VALUES ('".$name."', ".$_POST['groupList'].", '".$groupname."')";
-    echo $sql;
     $query = $groupme->query($sql);
 
     if ($query != FALSE) {
       header('Location: home.php');
+    }
+  }
+
+  if ($_POST['origin'] == "create") {
+    $sql = "SELECT * FROM groups";
+
+    foreach ( $groupme->query($sql) as $grouplist ) {
+      $input = strtolower( $_POST['groupName'] );
+      $check = strtolower( $grouplist['name'] );
+
+      if ( strcmp($input, $check) == 0 ) {
+        $inUse = 1;
+      }
+    }
+
+    if ( $inUse == 0 ) {
+      $sql = "INSERT INTO `groups` (`name`, `creator`) VALUES ('".$_POST['groupName']."', '".$name."')";
+      $query = $groupme->query($sql);
+
+      if ($query != FALSE) {
+
+        $sql = "SELECT gid FROM groups WHERE name = '".$_POST['groupName']."'";
+        foreach ( $groupme->query($sql) as $row );
+
+        $gid = $row['gid'];
+
+        $sql = "INSERT INTO `users`( `name`, `gid`, `groupname` ) VALUES ('".$name."', ".$gid.", '".$_POST['groupName']."')";
+        $query = $groupme->query($sql);
+
+        if ($query != FALSE) {
+          header('Location: home.php');
+        }
+      }
     }
   }
 
@@ -46,3 +79,21 @@
     }
   }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Create Group</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+  </head>
+  <body>
+    <!-- page content -->
+
+    <h1>Sorry, there was an error with your request.</h1>
+    <button id="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" onclick="window.location.href='home.php'"><span class="ui-button-text">Home</span></button>
+
+  </body>
+</html>
