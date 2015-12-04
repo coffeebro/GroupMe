@@ -25,16 +25,23 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.watermark.js"></script>
+    <script>
+      $(document).ready(function () {
+        $( '#groupName' ).watermark( 'Enter a unique group name' );
+      });
+    </script>
   </head>
   <body>
     <!-- page content -->
 
     <form action="groupmgmt.php" method="POST">
-      <input type="text" name="groupName">
+      <input type="text" name="groupName" id="groupName">
       <input type="hidden" name="origin" value="create">
       </br>
       <input type="submit" value="Create Group" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only ui-state-hover ui-state-active"role="button"><span class="ui-button-text"></span>
     </form>
+    <button id="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" role="button" onclick="window.location.href='home.php'"><span class="ui-button-text">Home</span></button>
 
   </body>
 </html>

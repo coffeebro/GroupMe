@@ -5,11 +5,17 @@ include("PHPAuth/Config.php");
 include("PHPAuth/Auth.php");
 
 $dbh = new PDO( "mysql:host=localhost;dbname=phpauth", "root", "" );
+$groupme = new PDO("mysql:host=localhost;dbname=groupme", "root", "");
 
 $config = new PHPAuth\Config($dbh);
 $auth   = new PHPAuth\Auth($dbh, $config);
 
 $return = $auth->register( $_POST['email'], $_POST['password'], $_POST['confirmpass'] );
+
+if ($return['error'] == FALSE) {
+  $sql = "INSERT INTO `notifications`(`user`) VALUES ('".$_POST['email']."')";
+  $query = $groupme->query($sql);
+}
 ?>
 
 <!DOCTYPE html>

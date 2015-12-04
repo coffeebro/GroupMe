@@ -71,11 +71,30 @@
 
   if ($_POST['origin'] == "leave") {
     $sql = "DELETE FROM users WHERE name = '".$name."' AND gid = ".$_POST['groupList'];
-    echo $sql;
     $query = $groupme->query($sql);
 
     if ($query != FALSE) {
       header('Location: home.php');
+    }
+  }
+
+  if ($_POST['origin'] == "alert") {
+    if (isset($_POST['fb'])) {
+      $sql = "UPDATE notifications SET `facebook`='".$_POST['fbinput']."' WHERE `user`='".$name."'";
+      $query = $groupme->query($sql);
+
+      if ($query != FALSE) {
+        header('Location: home.php');
+      }
+    }
+
+    if (isset($_POST['twitter'])) {  
+      $sql = "UPDATE notifications SET `twitter`='".$_POST['twitterinput']."' WHERE `user`='".$name."'";
+      $query = $groupme->query($sql);
+
+      if ($query != FALSE) {
+        header('Location: home.php');
+      }
     }
   }
 ?>

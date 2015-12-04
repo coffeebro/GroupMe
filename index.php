@@ -6,12 +6,20 @@
     <link rel="stylesheet" href="css/jquery-ui.min.css">
     <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.watermark.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $( '#email' ).watermark( 'you@example.com' );
+      });
+    </script>
+    
   </head>
   <body>
 
     <!--Sign Up Form-->
     <form action="signup.php" method="POST">
-      Email: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="email">
+      Email: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="text" name="email" id="email">
       <br>
       Password: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <input type="password" name="password">
       <br>
