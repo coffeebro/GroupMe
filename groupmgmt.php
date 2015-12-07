@@ -9,18 +9,18 @@
   $config = new PHPAuth\Config($dbh);
   $auth   = new PHPAuth\Auth($dbh, $config);
 
-  $uid = $auth->getSessionUID( $_COOKIE[$config->cookie_name] );
-  $data = $auth->getUser( $uid );
-
-  $name = $data['email'];
-  $inUse = 0;
-
   if (!$auth->isLogged()) {
     header('HTTP/1.0 403 Forbidden');
     echo "Forbidden";
 
     exit();
   }
+
+  $uid = $auth->getSessionUID( $_COOKIE[$config->cookie_name] );
+  $data = $auth->getUser( $uid );
+
+  $name = $data['email'];
+  $inUse = 0;
 
   if ($_POST['origin'] == "join") {
     $sql = "SELECT name FROM groups WHERE gid = ".$_POST['groupList'];
