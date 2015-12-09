@@ -42,4 +42,6 @@ Below is a list of the currently implemented functionality:
   5. Leave group
   6. Set alert preferences
   7. Upload files
-  8. Logout
+  8. View messages
+  9. See all members of a group
+  10. Logout
